@@ -1,4 +1,4 @@
-# SmartSpark-Final
+# SmartSpark
 
 ## Overview
 
