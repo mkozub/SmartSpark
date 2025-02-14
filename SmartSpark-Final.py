@@ -12,7 +12,7 @@ use_case = input("Enter the type of project you want to run: ")
 sheet_id = input("\nEnter Sheet ID: ")
 
 # OpenAI API call
-model_engine = "gpt-3.5-turbo"
+model_engine = "gpt-4"
 prompt = f"Generate a detailed, task-by-task plan to run a {use_case} project. Think hard to ensure the tasks cover all key tasks of a {use_case} project from initiation to completion. Also estimate the duration of each task in days. Just give me the number of days, no need to label the number. Return only the tasks and duration in a strict JSON structured. no other text. Here is the JSON structure you must follow: {{\"tasks\": [{{\"task\": \"Task Name\", \"duration\": \"Duration\"}}]}}"
 
 print("\n\n")
@@ -22,8 +22,8 @@ print("\n\n")
 response = client.chat.completions.create(
     model=model_engine,
     messages=[{"role": "user", "content": prompt}],
-    max_tokens=500,
-    temperature=0.7
+    max_tokens=1000,
+    temperature=0.9
 )
 
 generated_json = response.choices[0].message.content.strip()
